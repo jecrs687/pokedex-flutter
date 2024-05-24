@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokeapi/apis/getPokemons.dart';
 import 'package:pokeapi/src/app/details.dart';
-import 'package:pokeapi/src/pokemon/pokemon_box.dart';
+import 'package:pokeapi/src/widgets/common/pokemon/pokemon_box.dart';
 import 'package:pokeapi/types/pokemons.dart';
 
 /// Displays detailed information about a SampleItem.

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 /// Displays detailed information about a SampleItem.
-class _DownSideAppBar extends State<DownSideAppBar> {
+class _SearchBar extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
+    "0".padLeft(2, '0');
     return Container(
         width: double.maxFinite,
         height: 90,
@@ -70,9 +71,9 @@ class _DownSideAppBar extends State<DownSideAppBar> {
   }
 }
 
-class DownSideAppBar extends StatefulWidget {
+class SearchBar extends StatefulWidget {
   @override
-  State<DownSideAppBar> createState() => _DownSideAppBar();
+  State<SearchBar> createState() => _SearchBar();
 
-  const DownSideAppBar({Key? key}) : super(key: key);
+  const SearchBar({Key? key}) : super(key: key);
 }
