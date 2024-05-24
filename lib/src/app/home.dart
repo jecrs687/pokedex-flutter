@@ -70,12 +70,13 @@ class Home extends StatelessWidget {
           height: Size.infinite.height,
           width: Size.infinite.width,
           child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: const PokemonList(),
-          ),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: const SingleChildScrollView(
+                child: const PokemonList(),
+              )),
         ));
   }
 }

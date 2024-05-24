@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokeapi/apis/getPokemons%20copy.dart';
+import 'package:pokeapi/apis/getPokemon.dart';
 import 'package:pokeapi/src/app/details.dart';
 import 'package:pokeapi/types/pokemon.dart';
 
@@ -50,33 +50,31 @@ class _PokemonBox extends State<PokemonBox> {
                   if (snapshot.hasError) {
                     return Text('${snapshot.error}');
                   }
-                  if (!snapshot.hasData) {
-                    return const CircularProgressIndicator();
-                  }
-                  return Column(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(4),
-                        width: 80,
-                        child: Text(
-                          "#${widget.id}",
-                          textAlign: TextAlign.right,
-                          style: const TextStyle(
-                            color: Colors.black,
+                  if (snapshot.hasData) {
+                    return Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(4),
+                          width: 80,
+                          child: Text(
+                            "#${widget.id}",
+                            textAlign: TextAlign.right,
+                            style: const TextStyle(
+                              color: Colors.black,
+                            ),
                           ),
                         ),
-                      ),
-                      Image.asset(
-                        widget.url,
-                        width: 40,
-                        height: 40,
-                      ),
-                      Text(
-                        widget.name,
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ],
-                  );
+                        Image.network(
+                          snapshot.data!.sprites?.frontDefault ?? "",
+                        ),
+                        Text(
+                          snapshot.data!.name,
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ],
+                    );
+                  }
+                  return const CircularProgressIndicator();
                 })));
     ;
   }

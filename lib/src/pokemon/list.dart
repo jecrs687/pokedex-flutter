@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:pokeapi/apis/getPokemon.dart';
+import 'package:pokeapi/apis/getPokemons.dart';
 import 'package:pokeapi/src/app/details.dart';
 import 'package:pokeapi/src/pokemon/pokemon_box.dart';
 import 'package:pokeapi/types/pokemons.dart';
 
 /// Displays detailed information about a SampleItem.
 class _PokemonList extends State<PokemonList> {
+  late Future<Pokemons> futurePokemons;
+
+  @override
+  void initState() {
+    super.initState();
+    futurePokemons = fetchPokemons();
+  }
+
   @override
   Widget build(BuildContext context) {
-    late Future<Pokemons> futurePokemons;
-
-    @override
-    void initState() {
-      super.initState();
-      futurePokemons = fetchPokemons();
-    }
-
     return FutureBuilder<Pokemons>(
         future: futurePokemons,
         builder: (context, snapshot) {
@@ -30,7 +30,10 @@ class _PokemonList extends State<PokemonList> {
                   .toList(),
             );
           } else if (snapshot.hasError) {
-            return Text('${snapshot.error}');
+            return Text(
+              '${snapshot.error}',
+              style: TextStyle(color: Colors.black),
+            );
           }
 
           // By default, show a loading spinner.

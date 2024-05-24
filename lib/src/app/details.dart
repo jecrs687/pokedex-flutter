@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokeapi/src/DownSideAppBar/DownSideAppBar.dart';
+import 'package:pokeapi/src/pokemon/details.dart';
 import 'package:pokeapi/src/pokemon/pokemon_box.dart';
 
 import '../settings/settings_view.dart';
@@ -88,30 +89,7 @@ class PokemonDetails extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Column(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(4),
-                    width: 80,
-                    child: Text(
-                      "#$id",
-                      textAlign: TextAlign.right,
-                      style: const TextStyle(
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  Image.asset(
-                    "assets/images/pokeball.png",
-                    width: 40,
-                    height: 40,
-                  ),
-                  Text(
-                    "Pokemon",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ],
-              )),
+              child: PokemonDetailsBody(id: id)),
         ));
   }
 }
